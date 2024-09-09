@@ -5,6 +5,10 @@ class yRect(yItem):
 
     def __init__(self, name,left,top,width,height,color,border_width,visible=True):
         super().__init__(name,visible)
+        self.__init_shallow__(left,top,width,height,color,border_width)
+
+
+    def __init_shallow__(self,left,top,width,height,color,border_width):
         self.top = top
         self.left = left
         self.width = width

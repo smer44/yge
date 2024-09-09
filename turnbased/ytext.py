@@ -1,9 +1,9 @@
 from yge.turnbased.yitem import yItem
 class yText(yItem):
     def __init__(self,name, text,font, color,topleft,visible=True):
-        super().__init__(name,visible)
+        yItem.__init__(self,name,visible)
         self.font = font
-        self.color = color
+        self.textcolor = color
         self.render(text)
         self.update_pos(topleft)
         #self.update_pos(topleft)
@@ -19,7 +19,8 @@ class yText(yItem):
         :return:
         """
         self.text = text
-        self.image = self.font.render(text, True, self.color)
+        self.image = self.font.render(text, True, self.textcolor)
+        self.set_dirty()
 
 
     def update_pos(self, topleft):
@@ -29,6 +30,16 @@ class yText(yItem):
     def __display__(self,display):
         display.blit(self.image, self.rect.topleft)
 
+
+
+    def __repr__(self):
+        return f"<#TextItem {self.text}: topleft={self.rect.topleft}, visible = {self.visible}, text = {self.text}#>"
+
+    def __str__(self):
+        return repr(self)
+
+
+class yTextMouseReact(yText):
     def mouse_react(self, game,mouse_pos):
         if not self.visible:
             print(" -- !! mouse_react in yText is not visible :", self)
@@ -39,9 +50,3 @@ class yText(yItem):
             print(" -- !! mouse_react in yText :", self)
             game.item.bg.next()
             game.item.set_dirty_deep()
-
-    def __repr__(self):
-        return f"<#TextItem {self.text}: topleft={self.rect.topleft}, visible = {self.visible}, text = {self.text}#>"
-
-    def __str__(self):
-        return repr(self)

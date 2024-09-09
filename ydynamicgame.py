@@ -107,7 +107,7 @@ class Placer:
         value = self.args
         dx = (root.width -item.width) *value
         item.xpos(root.left+ dx)
-        print(f"exec_xalign: {item}, {value=}")
+        #print(f"exec_xalign: {item}, {value=}")
 
     def yalign(self, value):
         self.args = value

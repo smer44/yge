@@ -35,7 +35,7 @@ class yImage(yItem):
     def reload(self, path):
         self.name  = path
         self.loaded_image = pygame.image.load(path)
-        self.rect = self.loaded_image.get_rect()
+        #self.rect = self.loaded_image.get_rect()
         self.set_dirty()
 
 
