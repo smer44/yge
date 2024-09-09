@@ -1,10 +1,10 @@
 import pygame
-from yfillItem import yFillItem
-from yvariantitem import yVariantItem
-from ytext import yText
-from yscene import yScene
-from ygame import yGame
-from ybgscene import yBgScene
+from yge.turnbased.yfillItem import yFillItem
+from yge.turnbased.yvariantitem import yVariantItem
+from yge.turnbased.ytext import yText
+from yge.turnbased.yscene import yScene
+from yge.turnbased.ygame import yGame
+from yge.turnbased.ybgscene import yBgScene
 
 print(pygame.K_w)
 pygame.init()

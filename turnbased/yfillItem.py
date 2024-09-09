@@ -1,4 +1,4 @@
-from yitem import yItem
+from yge.turnbased.yitem import yItem
 class yFillItem(yItem):
 
     def __init__(self, *color):

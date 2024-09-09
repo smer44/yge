@@ -1,4 +1,4 @@
-from yscene import yScene
+from yge.turnbased.yscene import yScene
 
 class yBgScene(yScene):
 

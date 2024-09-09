@@ -1,4 +1,4 @@
-from yitem import yItem
+from yge.turnbased.yitem import yItem
 class yText(yItem):
     def __init__(self,name, text,font, color,topleft,visible=True):
         super().__init__(name,visible)
