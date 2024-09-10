@@ -19,10 +19,12 @@ def fill_gradient_array(array, axis, *args):
     colors = np.array([args[i] for i in range(0, len(args), 2)])
 
 
-    if axis == 'horizontal':
+    if axis == False or axis == None or axis == "h" or axis == 'horizontal' :
         axis_length = width
-    elif axis == 'vertical':
+        vert = False
+    elif axis == True or axis == "v" or axis == 'vertical':
         axis_length = height
+        vert = True
     else:
         raise ValueError("Axis must be 'horizontal' or 'vertical'")
     positions = [int(args[i + 1] *axis_length)  for i in range(0, len(args), 2)]
@@ -37,9 +39,12 @@ def fill_gradient_array(array, axis, *args):
         color_to = colors[position_from_id+1]
 
         colors_in_range = my_bresenham_line_vectors(position_from, color_from, position_to-1, color_to)
-        if axis == 'horizontal':
-            array[:, position_from:position_to] = colors_in_range
-        else:
+        if vert:
             shape = colors_in_range.shape
             new_shape = (shape[0],1,shape[1])
             array[position_from:position_to,:] = colors_in_range.reshape(new_shape)
+
+        else:
+            array[:, position_from:position_to] = colors_in_range
+
+

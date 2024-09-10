@@ -118,7 +118,7 @@ array = np.zeros(( width,height, 4), dtype=np.uint8)
 
 # Fill the array with a horizontal gradient
 # Gradient from red at position 0.0, to green at position 0.5, to blue at position 1.0
-fill_gradient_array(array, 'vertical', (255, 0, 0,200), 0.0, (0, 255, 255,255), 0.5, (0, 255, 0,0), 1.0)
+fill_gradient_array(array, "v", (255, 0, 0,200), 0.0, (0, 255, 255,255), 0.5, (0, 255, 0,0), 1.0)
 
 # Or for a vertical gradient
 # fill_gradient_array(array, 'vertical', (255, 255, 0), 0.0, (0, 255, 255), 1.0)

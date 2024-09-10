@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib.pyplot as plt
+
 
 def my_bresenham_line_vectors(x0, y0, x1, y1):
     print(f" {x0, y0, x1, y1 =}")
@@ -25,10 +25,10 @@ def my_bresenham_line_vectors(x0, y0, x1, y1):
     dy = np.abs(dys)
     assert all(dy < dx)
     sy = np.sign(dys)
-    print(f"{dy0_sing=}")
-    print(f"{dys=}")
-    print(f"{sy=}")
-    err = dx - dy
+    #print(f"{dy0_sing=}")
+    #print(f"{dys=}")
+    #print(f"{sy=}")
+    #err = dx - dy
     #now, dx > dys2
     err = dx-dy
 
@@ -38,9 +38,7 @@ def my_bresenham_line_vectors(x0, y0, x1, y1):
     for n in range(points_len):
         points[n] = y
         x0 += sx
-
         y +=sy0
-
         ed =  err+err
         indices = ed < dx
 
@@ -62,10 +60,10 @@ def my_bresenham_line_vectors_big_dx(x0, y0, x1, dx,dy,dys):
     sy = np.sign(dys)
 
     #sy[2] = -2
-    print(f"{dys=}")
-    print(f"{sy=}")
+    #print(f"{dys=}")
+    #print(f"{sy=}")
     err = dx - dy
-
+    assert err >= 0
     points_len = dx + 1
     points = np.zeros(shape=(points_len, len(y)), dtype=np.int32)
 
@@ -78,5 +76,9 @@ def my_bresenham_line_vectors_big_dx(x0, y0, x1, dx,dy,dys):
         y[indices] += sy[indices]
         err-= dy
     return points
+
+
+
+
 
 
