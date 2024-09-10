@@ -2,6 +2,7 @@ from yge.turnbased.ytextrectseq import yTextRectSequence
 from yge.turnbased.ygame import yGame
 from yge.turnbased.ybgscene import yBgScene
 from yge.turnbased.yfillItem import yFillItem
+from yge.turnbased.yfillchess import yFillChess
 import pygame
 from pygame.font import Font
 
@@ -33,12 +34,15 @@ yte = yTextRectSequence("yte test",
                         visible=True
                         )
 yte.loop = True
-bg = yFillItem(255,255,255)
+#bg = yFillItem(255,255,255)
+
+bg = yFillChess()
+#bg = yFillItem(255,255,255)
 
 bgscene = yBgScene("bgscene",bg, yte)
 
 yg = yGame(w,h ,bgscene)
-#yte.__display__(yg.display)
+bg.__display__(yg.display)
 print(yte)
 yg.run()
 
