@@ -63,7 +63,7 @@ def my_bresenham_line_vectors_big_dx(x0, y0, x1, dx,dy,dys):
     #print(f"{dys=}")
     #print(f"{sy=}")
     err = dx - dy
-    assert err >= 0
+    assert np.all(err >= 0)
     points_len = dx + 1
     points = np.zeros(shape=(points_len, len(y)), dtype=np.int32)
 
