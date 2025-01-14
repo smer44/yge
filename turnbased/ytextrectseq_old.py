@@ -1,16 +1,16 @@
 from yge.turnbased.ytext import yText
-from yge.turnbased.yrect import yRect
+#from yge.turnbased.yrect import yRect
 
-class yTextRectSequence(yText,yRect):
+class yTextRectSequence(yText):
 
-    def __init__(self, name, texts, font, textcolor, left,top,width,height,rectcolor, border_width, visible=True):
-        yText.__init__(self, name, texts[0], font, textcolor, (left, top),visible)
-        yRect.__init_shallow__(self,left,top,width,height,rectcolor,border_width)
+    def __init__(self, name, texts, font, textcolor, left,top,width,height,rectcolor, border_width):
+        yText.__init__(self, name, texts[0], font, textcolor, (left, top))
+        #yRect.__init_shallow__(self,left,top,width,height,rectcolor,border_width)
         self.texts = texts
         self.texts_pos = 0
         self.loop = False
 
-    def next(self):
+    def create_image(self):
         self.texts_pos += 1
         if self.texts_pos >= len(self.texts):
             if self.loop:
@@ -20,7 +20,7 @@ class yTextRectSequence(yText,yRect):
                 text = ""
         else:
             text = self.texts[self.texts_pos]
-        self.render(text)
+        self.image = self.font.render(text, True, self.textcolor)
 
     def mouse_react(self, game, mouse_pos):
         mx,my = mouse_pos
@@ -34,7 +34,7 @@ class yTextRectSequence(yText,yRect):
 
 
     def __display__(self,display):
-        yRect.__display__(self, display)
+        #yRect.__display__(self, display)
         yText.__display__(self, display)
 
     def __repr__(self):

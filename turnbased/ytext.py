@@ -1,42 +1,37 @@
-from yge.turnbased.yitem import yItem
-class yText(yItem):
-    def __init__(self,name, text,font, color,topleft,visible=True):
-        yItem.__init__(self,name,visible)
+from yge.turnbased.yabstract import yLazyImagePattern
+class yText(yLazyImagePattern):
+    def __init__(self,name, text,font, color,):
+        yLazyImagePattern.__init__(self,name)
         self.font = font
         self.textcolor = color
-        self.render(text)
-        self.update_pos(topleft)
+        self.text = text
+        #self.render(text)
+        #self.update_pos(topleft)
         #self.update_pos(topleft)
         self.is_mouse_listener = True
 
 
-    def render(self, text):
-        """
-        This draws the text image again and must be called if
-        either text message or color has changed
-        :param text:
-        :param color:
+    def create_image(self,width,height):
+        '''
+        For now, width and height are ignored.
+        :param width:
+        :param height:
         :return:
-        """
-        self.text = text
+        '''
+        text = self.text
         self.image = self.font.render(text, True, self.textcolor)
-        self.set_dirty()
+        #self.set_dirty()
 
 
-    def update_pos(self, topleft):
-        self.rect = self.image.get_rect(topleft =topleft)
-
-
-    def __display__(self,display):
-        display.blit(self.image, self.rect.topleft)
-
+    #def update_pos(self, topleft):
+    #    self.rect = self.image.get_rect(topleft =topleft)
 
 
     def __repr__(self):
-        return f"<#TextItem {self.text}: topleft={self.rect.topleft}, visible = {self.visible}, text = {self.text}#>"
+        return f"<TextItem |{self.text[:20]}|>"
 
     def __str__(self):
-        return repr(self)
+        return f"<TextItem |{self.name}|>"
 
 
 class yTextMouseReact(yText):

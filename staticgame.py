@@ -1,10 +1,10 @@
 import pygame
-from yge.turnbased.yfillItem import yFillItem
+from yge.turnbased.yfillItem import ySolid
 from yge.turnbased.yvariantitem import yVariantItem
 from yge.turnbased.ytext import yText
 from yge.turnbased.yscene import yScene
 from yge.turnbased.ygame import yGame
-from yge.turnbased.ybgscene import yBgScene
+from yge.turnbased.ybgscene import yFrame
 
 print(pygame.K_w)
 pygame.init()
@@ -24,9 +24,9 @@ def display(ga):
 
 
 
-bg = yFillItem(255, 255, 255)
+bg = ySolid(255, 255, 255)
 
-bg2 = yFillItem(100, 100, 100)
+bg2 = ySolid(100, 100, 100)
 
 switch_bg = yVariantItem("bg",bg, bg2)
 
@@ -40,7 +40,7 @@ ta2 = yText('Tutorial','Tutorial', font,(0, 255,0), (200, 250),True)
 
 menu = yScene("menu",ta, ta2)
 
-main_scene = yBgScene("bg scene", switch_bg, menu)
+main_scene = yFrame("bg scene", switch_bg, menu)
 
 ga  = yGame(800,600,main_scene)
 

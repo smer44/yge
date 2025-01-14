@@ -1,4 +1,4 @@
-class yScene:
+class yScene_old:
 
     def __init__(self,name,*items):
         assert isinstance(name, str)

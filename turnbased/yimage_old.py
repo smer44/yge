@@ -1,7 +1,8 @@
 from yge.turnbased.yitem import yItem
 import pygame
 
-class yImage(yItem):
+#positioned component
+class yImage_old(yItem):
 
     def __init__(self,path,top,left,width,height,visible = True):
         super().__init__(path, visible)

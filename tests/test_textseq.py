@@ -1,7 +1,7 @@
+from yge.turnbased.ysolid import ySolid
 from yge.turnbased.ytextsequence import yTextSequence
 from yge.turnbased.ygame import yGame
-from yge.turnbased.ybgscene import yBgScene
-from yge.turnbased.yfillItem import yFillItem
+from yge.turnbased.ycontainer import yFrame
 import pygame
 from pygame.font import Font
 
@@ -18,12 +18,17 @@ pygame.init()
 font = Font(None, 74)
 
 w,h = 1920,1080
-
-yte = yTextSequence("hello text", texts,font,(255,255,0),(w//2,h//2))
+#TODO - distinguish component, what size is controlled from above (from parent)
+#and what size is controlled from bottom to up ( it controlls parent size)
+yte = yTextSequence("hello text", texts,font,(255,255,0))
 yte.loop = True
-bg = yFillItem(0,0,0)
+bg = ySolid(0, 0, 0)
 
-bgscene = yBgScene("bgscene",bg, yte)
+scene = yFrame("bgscene", bg, yte)
 
-yg = yGame(w,h ,bgscene)
+yg = yGame(scene,w,h)
+
+yg.add_deep(scene)
+print(f"{yg.mouse_listeners=}")
+print(f"{yg.visible=}")
 yg.run()
