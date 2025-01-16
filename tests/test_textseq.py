@@ -1,4 +1,4 @@
-from yge.turnbased.yabstract import ySamePlacer
+from yge.turnbased.ysametomany import ySamePlacer
 from yge.turnbased.ynormoffset import yNormOffsetPlacer
 from yge.turnbased.ynotcreaterthenimage import yNotGreaterThenImagePlacer
 from yge.turnbased.ysametomany import ySameToManyPlacer
@@ -36,7 +36,7 @@ yte = yTextSequence("hello text", texts,font,(255,255,0))
 
 place_not_greater = yNotGreaterThenImagePlacer("test_not_greater_placer", yte)
 
-place_same_to_many
+#place_same_to_many
 
 yte.loop = True
 yte.placer = place_mid

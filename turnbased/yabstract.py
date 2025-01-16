@@ -161,14 +161,18 @@ class yOneToManyPlacer:
     and returns multiple rects - used for a yContainer what has children.
     Usually, those rects are inside of given rect, but it is not necessary.
     '''
-    def __init__(self, name, nextPlacer=None):
+    def __init__(self, name):
         assert isinstance(name, str)
         self.name = name
 
         if not hasattr(self, "__place_shallow_next__") or not callable(self.__place_shallow_next__):
             raise NotImplementedError(
                 f"{self.__class__.__name__} is subclass of yOneToManyPlacer does not implement __place_shallow_next__ method")
-        self.set_next_placer(nextPlacer)
+
+        if not hasattr(self, "place_start") or not callable(self.place_start):
+            raise NotImplementedError(
+                f"{self.__class__.__name__} is subclass of yOneToManyPlacer does not implement place_start method")
+        self.set_next_placer(None)
 
     def set_next_placer(self, nextPlacer):
         if nextPlacer is None:
@@ -178,8 +182,8 @@ class yOneToManyPlacer:
             self.nextPlacer = nextPlacer
             self.place_next = self.place_chain_next
 
-    def place_start(self,rect):
-        raise NotImplementedError(f"{self} : place_start not implemented")
+    #def place_start(self,rect):
+    #    raise NotImplementedError(f"{self} : place_start not implemented")
 
     def place_chain_next(self):
         print(f"{self} : place_chain")
@@ -190,10 +194,7 @@ class yOneToManyPlacer:
         return f"<{self.__class__.__name__} : {self.name}>"
 
 
-class ySamePlacer(yOneToOnePlacer):
 
-    def __place_shallow__(self,rect):
-        return rect
 
 
 

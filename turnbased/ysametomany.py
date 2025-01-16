@@ -1,4 +1,10 @@
-from yge.turnbased.yabstract import  yOneToManyPlacer
+from yge.turnbased.yabstract import yOneToManyPlacer, yOneToOnePlacer
+
+
+class ySamePlacer(yOneToOnePlacer):
+
+    def __place_inner__(self,rect):
+        return rect#.copy()
 
 
 class ySameToManyPlacer(yOneToManyPlacer):
