@@ -45,13 +45,13 @@ place_not_greater2 = yNotGreaterThenImagePlacer("test_not_greater_placer2", yte2
 place_not_greater3 = yNotGreaterThenImagePlacer("test_not_greater_placer3", yte3)
 
 place_same = ySamePlacer("boring same placer")
-yte.placer = place_same
-yte2.placer = place_same
-yte3.placer = place_same
+yte.placer = place_not_greater
+yte2.placer = place_not_greater2
+yte3.placer = place_not_greater3
 
 
 #TODO - create placers as pure functions?
-place_box = yBoxPlacer("test_box_placer", 3,2,100)
+place_box = yBoxPlacer("test_box_placer", 3,3,100)
 
 
 bg = ySolid("TestBackground",10, 10, 10)

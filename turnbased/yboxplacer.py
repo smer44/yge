@@ -53,6 +53,7 @@ class yBoxPlacer(yOneToManyPlacer):
         self.step = child_size + sp
         if self.direction > 1:
             self.step = -self.step
+            self.pos -= self.child_size
 
 
     def place_horizontal(self):

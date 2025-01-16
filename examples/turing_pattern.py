@@ -11,7 +11,7 @@ clock = pygame.time.Clock()
 
 # Turing pattern parameters
 D_A = 1.0  # Diffusion rate of activator
-D_B = 0.5  # Diffusion rate of inhibitor
+D_B = 0.35  # Diffusion rate of inhibitor
 
 feed_rate = 0.055
 kill_rate = 0.062
