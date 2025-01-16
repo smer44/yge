@@ -1,5 +1,7 @@
-from yge.turnbased.yabstract import yLazyImagePattern
-class yText(yLazyImagePattern):
+from yge.turnbased.yabstract import yLazyImagePattern, yLazyImageGenFixedSize
+
+
+class yText(yLazyImageGenFixedSize):
     def __init__(self,name, text,font, color,):
         yLazyImagePattern.__init__(self,name)
         self.font = font
@@ -11,7 +13,7 @@ class yText(yLazyImagePattern):
         self.is_mouse_listener = True
 
 
-    def create_image(self,width,height):
+    def create_image(self):
         '''
         For now, width and height are ignored.
         :param width:

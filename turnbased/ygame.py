@@ -17,6 +17,16 @@ class yGame:
         self.mouse_listeners = []
         self.visible = []
 
+    def rect(self):
+        return self.surface.get_rect()
+
+    def place(self):
+        '''
+        Places root in the rectangle of the game.
+        :return:
+        '''
+        self.root.place(self.rect())
+
     def __str__(self):
         return "<|yGame:{self.root}|>"
 
@@ -27,6 +37,7 @@ class yGame:
         for listener in self.mouse_listeners:
             #get first component what would react on mouse_pos:
             if listener.rect().collidepoint(mouse_pos):
+            #if listener.collidepoint(mouse_pos):
                 listener.mouse_react(self,mouse_pos)
 
     def toggle_in_list(self,lst,item):

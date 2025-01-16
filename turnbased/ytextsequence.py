@@ -7,9 +7,17 @@ class yTextSequence(yText):
         self.texts = texts
         self.pos = 0
         self.loop = False
+        self.retain_wh = True
 
     def rect(self):
-        return self.image.get_rect()
+        #return self.image.get_rect()
+        return self.dest_rect
+
+    def collidepoint(self,mouse_pos):
+        x,y,w,h = self.dest_rect
+        mx,my = mouse_pos
+        return x <= mx <=x+w and y <= my <=y+h
+
 
     def next(self):
         self.pos+=1
@@ -25,10 +33,10 @@ class yTextSequence(yText):
 
     def mouse_react(self, game, mouse_pos):
 
-        text_rect = self.rect()
-        print(f" !!!! yTextSequence.mouse_react({game}, {mouse_pos}) : {text_rect=}")
-        if text_rect.collidepoint(mouse_pos):
-            self.next()
+        #text_rect = self.dest_rect
+        print(f" !!!! yTextSequence.mouse_react({game}, {mouse_pos}) : {self.dest_rect=}")
+        #if text_rect.collidepoint(mouse_pos):
+        self.next()
 
 
 

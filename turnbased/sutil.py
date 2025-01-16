@@ -4,6 +4,10 @@ def myrange(a,b,step=1):
         return range(a,b+1,step)
     return range(a, b-1, -step)
 
+def arange(a,b,step):
+    while a <b:
+        yield a
+        a+=step
 
 def to_enum(enum_list, value , *values):
     assert enum_list and len(enum_list) == len(values)

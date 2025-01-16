@@ -12,24 +12,16 @@ class yContainer(yDraw):
         for child in self.children:
             child.draw(surface)
 
+    def place(self,rect):
+        assert hasattr(self, 'placer') and self.placer is not None, f"{self}: has no placer"
+        assert hasattr(self.placer, 'place_start'), f"{self}.place called: placer has no method place_start"
+        assert hasattr(self.placer, 'place_next'), f"{self}.place called: placer has no method place_next"
+        assert callable(self.placer.place_start), f"{self}.place called: placer.place_start is not callable"
+        assert callable(self.placer.place_next), f"{self}.place called: placer.place_next is not callable"
+        placer = self.placer
+        placer.place_start(rect)
+        for child in self.children:
+            child.place(placer.place_next())
 
 
-class yFrame(yContainer):
-    '''
-    Frame has a background and some items on it - other items are inherited from yItem
-    and are drawn after background is drawn.
-    All components should be inside background instance.
-    '''
-    def __init__(self,name, bg, *items):
-        super().__init__(name,*items)
-        self.bg = bg
 
-    def draw(self,screen):
-        self.bg.draw(screen)
-        yContainer.draw(self,screen)
-
-    def rect(self):
-        return self.bg.rect()
-
-    def mouse_react(self, game,mouse_pos):
-        self.bg.mouse_react(game,mouse_pos)
